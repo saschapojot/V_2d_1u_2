@@ -32,7 +32,7 @@ const auto PI=M_PI;
 class mc_computation
 {
 public:
-    mc_computation(const std::string &cppInParamsFileName): e2(12),distUnif01(0.0, 1.0)
+    mc_computation(const std::string &cppInParamsFileName): e2(std::random_device{}()),distUnif01(0.0, 1.0)
     {
 
         std::ifstream file(cppInParamsFileName);

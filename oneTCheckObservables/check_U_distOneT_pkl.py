@@ -369,8 +369,8 @@ def check_equilibrium(pVec,statVec):
 
 eqVec=check_equilibrium(pVec,statVec)
 
-numDataPoints=np.max(numDataVec)
-lagMax=np.min(lagVec)
+numDataPoints=np.min(numDataVec)
+lagMax=np.max(lagVec)
 if np.all(eqVec) and numDataPoints>=200:
     if numDataPoints>=effective_data_num_required:
         newDataPointNum=0

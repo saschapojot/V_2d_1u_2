@@ -9,7 +9,7 @@ class V_2:public potentialFunction
 public:
     V_2(const std::string &coefsStr):potentialFunction(){
         this->coefsInStr=coefsStr;
-        this->d0=0.5;
+
     }
 
     void json2Coefs(const std::string &coefsStr)override
@@ -42,8 +42,10 @@ public:
         this->r1=std::pow(2.0*a1/b1,1.0/6.0);
 
         this->lm=(static_cast<double >(N)*r1)*10;
+        this->r0=r1;
 
         std::cout << "a1=" << a1 << ", b1=" << b1  << std::endl;
+        std::cout<<"r0="<<r0<<std::endl;
         std::cout<<"r1="<<r1<<std::endl;
         std::cout<<"lm="<<lm<<std::endl;
 
@@ -77,10 +79,11 @@ public:
     }
     double dist(const double&x, const double &y)
     {
-        return std::sqrt(std::pow(x-d0,2.0)+std::pow(y-d0,2.0));
+        return std::sqrt(std::pow(x,2.0)+std::pow(y,2.0));
     }
     double V1(const double &r){
-        double  val=std::pow(r,2.0);
+        double  val=-std::pow(b1,2.0)/(4.0*a1)+9*std::pow(2,-1.0/3.0)*std::pow(b1,7.0/3.0)*std::pow(a1,-4.0/3.0)*std::pow(r-r0,2.0);
+
         return val;
     }
 
@@ -97,7 +100,7 @@ public:
     // double r2;//min position of V2
     double lm;//range of distances
     int N;
-    double d0;
+    double r0;
 };
 
 
